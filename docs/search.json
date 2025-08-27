@@ -1,0 +1,464 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Marine Ecosystem Dynamics\n\nSeptember 2025\nOn this website, material for the introduction to R are made available.\nIn the MATERIAL tab, slides and exercises can be found.\n\nDuring this introduction, we will learn how to use  in  to handle data.\nInstall R and R studio before the start of the lecture !\n\n\n\n\n\n\nDay 1\n\nR syntax\nImport Data\n\n\n\n\nDay 2\n\nPipe the data using magrittr\nTidy the data using tidyr\nArrange the data using dplyr\nVisualise the data using ggplot2\n\n\n\n\nThe data we will use are all available in the package PlanktonData"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n#&gt; [1] 2"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html",
+    "href": "MATERIAL/tutorial/part1.html",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": "",
+    "text": "As seen during the presentation, we will keep track of our progress. We thus need to open a new script following one of the option below.\n\n\n\n\nflowchart LR\n  A[1. File] --&gt; B[2. New File]\n  B --&gt; C[3. R script]\n\n\n\n\n\n\n\n\n\nflowchart LR\n  A[\"⌘/Ctlr + ⇧ + N\"]"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html#new-script",
+    "href": "MATERIAL/tutorial/part1.html#new-script",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": "",
+    "text": "As seen during the presentation, we will keep track of our progress. We thus need to open a new script following one of the option below.\n\n\n\n\nflowchart LR\n  A[1. File] --&gt; B[2. New File]\n  B --&gt; C[3. R script]\n\n\n\n\n\n\n\n\n\nflowchart LR\n  A[\"⌘/Ctlr + ⇧ + N\"]"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html#fa-brands-r-project-syntax-r-syntax",
+    "href": "MATERIAL/tutorial/part1.html#fa-brands-r-project-syntax-r-syntax",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": " syntax R syntax",
+    "text": "syntax R syntax\n is a programming language that use a simplified syntax. In this section, we will explore how to write a script and execute it. R is a programming language that use a simplified syntax. In this section, we will explore how to write a script and execute it.\nBut first some syntax information:\n\nEverything after # is considered as a comment and will not be executed. It is very important to write what we are doing, so we do not get lost next time we open our scripts.\n\n\n# 2 + 2 will not work because of the #\n2 + 2 # We should then annotate our script like this\n#&gt; [1] 4\n\n\nSeveral lines of code can be written in one line but must be separated by a semicolon\n\n\n2 + 2\n#&gt; [1] 4\n3 * 2\n#&gt; [1] 6\n\n# This can also be written as follow:\n2 + 2 ; 3 * 2\n#&gt; [1] 4\n#&gt; [1] 6\n\n\nIn  we can name any object using =, &lt;-, -&gt; or assign In R we can name any object using =, &lt;-, -&gt; or assign\n\n\nc(1, 2, 3, 4) -&gt; my_first_vector\nmy_vector &lt;- c(1, 2, 3, 4)\nmy_function = function(x){x + 2}\nassign(\"x\", c(2, 3, 4, 5))\n\n\n== is a logical function that can be translated as is equal to, contrarily is not equal to is written !=\n\n\n2 + 2 == 4\n#&gt; [1] TRUE\n3 * 2 == 4\n#&gt; [1] FALSE\n3 * 2 != 4\n#&gt; [1] TRUE\n\n\nExercises\nUsing a new  script, do these calculations: Using a new R script, do these calculations:\n\n\\ 2^7\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n2^7\n#&gt; [1] 128\n\n\n\n\n\n\n\\ cos(\\pi)\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n?cos()\n?pi()\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ncos(pi)\n#&gt; [1] -1\n\n\n\n\n\n\nThe sum of all number from 1 to 100\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nOperations can take place for an entire vector\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nvector &lt;- seq(from = 1, to = 100, by = 1) # Create a vector from 1 to 100\nsum(vector) # Calculate the sum\n#&gt; [1] 5050\n\n\n\n\n\nCreate a parameter x1 that equals to 5 and a parameter x2 that equals to 10\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nx1 &lt;- 5 ; x2 &lt;-  10\n\n\n\n\n\n\nIs \\ 2* x1 equal to x2?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n2 * x1 == x2\n#&gt; [1] TRUE"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html#functions",
+    "href": "MATERIAL/tutorial/part1.html#functions",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": "Functions",
+    "text": "Functions\nAs seen during the lecture,  works with functions that can: As seen during the lecture, R works with functions that can:\n\nAlready be implemented in base  Already be implemented in base R\nComming from another package\nCreated by the user\n\nWe will see these three examples in this section, but first it is important to remember that the typical structure of a function is function(argument1, ...).\nFortunately  helps us to remember what are the needed arguments: Fortunately R helps us to remember what are the needed arguments:\n\nUsing help() or ?\n\n\n\nhelp(topic = \"sin\")\n?sin\n\n\n\nUsing example\n\n\n\nexample(sum)\n#&gt; \n#&gt; sum&gt; ## Pass a vector to sum, and it will add the elements together.\n#&gt; sum&gt; sum(1:5)\n#&gt; [1] 15\n#&gt; \n#&gt; sum&gt; ## Pass several numbers to sum, and it also adds the elements.\n#&gt; sum&gt; sum(1, 2, 3, 4, 5)\n#&gt; [1] 15\n#&gt; \n#&gt; sum&gt; ## In fact, you can pass vectors into several arguments, and everything gets added.\n#&gt; sum&gt; sum(1:2, 3:5)\n#&gt; [1] 15\n#&gt; \n#&gt; sum&gt; ## If there are missing values, the sum is unknown, i.e., also missing, ....\n#&gt; sum&gt; sum(1:5, NA)\n#&gt; [1] NA\n#&gt; \n#&gt; sum&gt; ## ... unless  we exclude missing values explicitly:\n#&gt; sum&gt; sum(1:5, NA, na.rm = TRUE)\n#&gt; [1] 15\n\n\nFor the functions that comes from external packages, we first need to install the new packages. The most common way to do so is by executing install.packages(\"Package_Name\"). Then when we want to load the functions, we start the script by executing library(Package_Name).\nFinally, if we really do not find a suitable function in a package, we can create your functions following this general structure, but this will not be covered in this tutorial:\n\nmy_function &lt;- function(&lt;argument1&gt;, &lt;argument2&gt;, ...){\n  &lt;here comes the definition of my function&gt;\n  return(&lt;output of the definition&gt;)\n}\n\n\nExercises\n\nWhat is the function log() doing and from were does this function come from (base , other packages)? What is the function log() doing and from were does this function come from (base R, other packages)?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n?log() #It takes the natural logarithm of the value, it comes from base R\nlog(10) \n\n\n\n\n\n\nWhat are the mandatory arguments for the function plot()\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n?plot() # the coordinates points x and y are needed\n\n\n\n\n\n\nIs there help associated with the functions from a loaded package?\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe function ggplot() comes from the package ggplot2\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(ggplot2)\n?ggplot # Yes, there is also help for the imported functions\n\n\n\n\n\n\n\n\n\n\nOptional exercises\n\n\n\n\nCreate a function that print Hello World! when executing it\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nHello &lt;- function(){\n  cat(\"Hello World!\") # print(\"Hello World!\") works too\n}\nHello()\n#&gt; Hello World!\n\n\n\n\n\nCreate a function that multiply the input by 4\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nmultiplyeR &lt;- function(x, y = 4){\n  return(x * y)\n}\nmultiplyeR(x = 2) # It works with values\n#&gt; [1] 8\nmultiplyeR(x = seq(1, 3, 1)) # But also vectors\n#&gt; [1]  4  8 12"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html#vectors",
+    "href": "MATERIAL/tutorial/part1.html#vectors",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": "Vectors",
+    "text": "Vectors\n works with vector from which we can do our calculations. R works with vector from which we can do our calculations. Several ways exist to create a vector:\n\nUsing c(), values are added next to each other and separated with a ,.\n\n\nc(1, 2, 1, 4) # It works with integers (round numbers)\nc(1.1, 2.4, 3.14652) # It works with floats (decimal numbers)\nc(\"chocolate\", \"ice-cream\") # It works with character\nc(TRUE, FALSE) # It works with logical variables\n\n\nUsing rep() to repeat the same values several times.\n\n\nrep(x = 3, 2) # it reads: repeat 2 times the value x that is equal to 3\nrep(x = \"chocolate\", 3) # it reads: repeat 3 times the value x that is equal to \"chocolate\"\n\n\nUsing seq() to create a sequence of values. It only works for numeric values!\n\n\nseq(from = 0, to = 10, by = 2) # it reads: create a sequence of values from 0 to 10 every 2 numbers\nseq(from = -1, to = 1, by = 0.2) # it also works with negative values and decimal\n\n\nCombining all of the above\n\n\nrep(x = c(seq(from = 2, to = 3, by = 0.2), 5), 2)\nc(rep(x = \"character\", 5), \"other character\")\nc(seq(from = 2, to = 10, by = 2), rep(x = 1000, 2), c(1, 4, 2))\n\n\nExercises\n\nCreate a vector v1 that contains the values 1, 2, 3, 4, 6\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nv1 &lt;- c(1, 2, 3, 4, 6)\n\n\n\n\n\n\nCreate a vector v2 that contains 10 times the values 1, 2, 3, 4, 6\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nv2 &lt;- rep(v1, 10)\n\n\n\n\n\n\nCreate a vector v3 that repeats TRUE, FALSE 2 times\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nv3 &lt;- rep(c(TRUE, FALSE), 2)\n\n\n\n\n\n\nCreate a vector v4 that goes from 10 to 2000\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nv4 &lt;- 10:2000\n# or \nv4 &lt;- seq(from  = 10, to = 2000, by = 1)\n\n\n\n\n\n\nCreate a vector v5 that contains v1, v2, v3 and 2 times v4\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nv5 &lt;- c(v1, v2, v3, rep(v4, 2))"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html#dataframe",
+    "href": "MATERIAL/tutorial/part1.html#dataframe",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": "Dataframe",
+    "text": "Dataframe\nMost likely, we will work with data stored in dataframes. A dataframe is composed of observations (rows) and variables (columns). We can see a dataframe like multiples vectors put togethers.\nFor example in the dataframe below (named df) is composed of 4 vectors:\n\nSpecies that contains the species names\nAbundance that contains the abundances of the species\nLocation that contains the location of the species\nDate that contains the sampling date\n\n\n#&gt;         Species Abundance Location       Date\n#&gt; 1       Acartia        34     Askö 03-09-2024\n#&gt; 2 Pseudocalanus        12     Askö 04-09-2024\n#&gt; 3   Centropages        17     Askö 02-09-2024\n\nWe can access the individual columns (i.e., vectors) using $\n\ndf$Species\n#&gt; [1] \"Acartia\"       \"Pseudocalanus\" \"Centropages\"\ndf$Abundance\n#&gt; [1] 34 12 17\ndf$Location\n#&gt; [1] \"Askö\" \"Askö\" \"Askö\"\ndf$Date\n#&gt; [1] \"03-09-2024\" \"04-09-2024\" \"02-09-2024\"\n\n\nExercises\n\nCreate a vector genus containing the character \"Acartia\", \"Centropages\", \"Temora\", \"Acartia\", \"Centropages\", \"Temora\"\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ngenus = c(\"Acartia\", \"Centropages\", \"Temora\", \"Acartia\", \"Centropages\", \"Temora\") \n# or genus = rep(c(\"Acartia\", \"Centropages\", \"Temora\"), 2)\n\n\n\n\n\n\nCreate a vector station containing the character \"Askö\", \"Askö\", \"Askö\", \"Tjarnö\", \"Tjarnö\", \"Tjarnö\"\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nstation = c(rep(\"Askö\",3),rep(\"Tjarnö\", 3))\n\n\n\n\n\n\nCreate a vector abundance containing the values 3, 10.2, 4, 2.3, 4, 9.4\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nabundance = c(3, 10.2, 4, 2.3, 4, 9.4)\n\n\n\n\n\n\nCombine all the vectors in a dataframe called df\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ndf &lt;- data.frame(\"Genus\" = genus,\n                 \"Station\" = station,\n                 \"Abundance\" = abundance)\n\n\n\n\n\n\nCreate a vector output that correspond to the column Abundance of the dataframe df. Is output similar to the vector abundance?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\noutput &lt;- df$Abundance # or df[[3]]\noutput == abundance\n#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part1.html#importing-data-in-fa-brands-r-project-importing-data-in-r",
+    "href": "MATERIAL/tutorial/part1.html#importing-data-in-fa-brands-r-project-importing-data-in-r",
+    "title": "Tutoial - Part 1 TutoRial - Part 1",
+    "section": "Importing data in  Importing data in R",
+    "text": "Importing data in  Importing data in R\n\nMore often we enter our data in spreadsheets. We then need to import our data in R to process them. To do so, we use the read.* function family.\n\n\nMore often we enter our data in spreadsheets. We then need to import our data in  to process them. To do so, we use the read.* function family.\n\nA typical data import protocol looks like this:\n\nSet the working directory with its absolute path\n\n\nsetwd(\"/Absolute/Path/To/Working/Directory\")\n\n\nImport your dataset in your environment\n\n\ndf &lt;- read.csv(\"./Relative/Path/Dataset.csv\")\n\n\nExamine the structure of the data to see if the importation worked well\n\n\nstr(df)\nhead(df)\ntail(df)\n\n\nExercises\n\n\n  Click here to download the dataset zooplankton_seasonality.csv\n\n\n\nImport the dataset in your environment\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ndf &lt;- read.csv(\"./assets/zooplankton_seasonality.csv\")\n\n\n\n\n\n\nHow many rows and columns does this dataset contain?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe structure of the dataset shows that there is 7 variables (columns) and 2956 observations (rows)\n\nstr(df)\n#&gt; 'data.frame':    2956 obs. of  7 variables:\n#&gt;  $ Month_abb  : chr  \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n#&gt;  $ Year       : int  2009 2009 2009 2009 2009 2009 2009 2009 2009 2009 ...\n#&gt;  $ Station    : chr  \"BY15\" \"BY31\" \"BY5\" \"BY15\" ...\n#&gt;  $ Coordinates: chr  \"20.05000/57.33333\" \"18.23333/58.58812\" \"15.98333/55.25000\" \"20.05000/57.33333\" ...\n#&gt;  $ Group      : chr  \"Copepoda\" \"Copepoda\" \"Copepoda\" \"Copepoda\" ...\n#&gt;  $ Taxa       : chr  \"Acartia\" \"Acartia\" \"Acartia\" \"Centropages\" ...\n#&gt;  $ Biomass    : num  6.65 1.82 5.56 5.74 1.23 ...\n\n\n\n\n\n\nWhat are the headers of the columns?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nBoth the stucture and the head show that the headers are: Month_abb, Year, Station, Coordinates, Group, Taxa, Biomass\n\nhead(df)\n#&gt;   Month_abb Year Station       Coordinates    Group        Taxa   Biomass\n#&gt; 1       Jan 2009    BY15 20.05000/57.33333 Copepoda     Acartia  6.650319\n#&gt; 2       Jan 2009    BY31 18.23333/58.58812 Copepoda     Acartia  1.816994\n#&gt; 3       Jan 2009     BY5 15.98333/55.25000 Copepoda     Acartia  5.562097\n#&gt; 4       Jan 2009    BY15 20.05000/57.33333 Copepoda Centropages  5.738561\n#&gt; 5       Jan 2009    BY31 18.23333/58.58812 Copepoda Centropages  1.228759\n#&gt; 6       Jan 2009     BY5 15.98333/55.25000 Copepoda Centropages 14.405224\n\n\n\n\n\n\nWhat is the last row?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nTo see the last row, use the tail function\n\ntail(df)\n#&gt;      Month_abb Year Station       Coordinates     Group      Taxa    Biomass\n#&gt; 2951       Dec 2021    BY15 20.05000/57.33333  Copepoda    Temora 32.2266648\n#&gt; 2952       Dec 2021    BY31 18.23333/58.58812  Copepoda    Temora  7.6000062\n#&gt; 2953       Dec 2021     BY5 15.98333/55.25000  Copepoda    Temora 23.0666650\n#&gt; 2954       Dec 2021    BY15 20.05000/57.33333 Rotatoria Synchaeta  1.0400010\n#&gt; 2955       Dec 2021    BY31 18.23333/58.58812 Rotatoria Synchaeta  0.0800001\n#&gt; 2956       Dec 2021     BY5 15.98333/55.25000 Rotatoria Synchaeta  1.2900000"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part2.html",
+    "href": "MATERIAL/tutorial/part2.html",
+    "title": "Tutoial - Part 2 TutoRial - Part 2",
+    "section": "",
+    "text": "Pipes, expressed as %&gt;% or |&gt;, are very useful and make our code clearer. Using pipes, our data flow from one function to another.\n\n\n\nRewrite these chunks of code using the pipes\n\n\nsum(c(2.2,4.1,2,pi))\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nc(2.2,4.1,2,pi) |&gt; sum()\n# OR\nc(2.2,4.1,2,pi) %&gt;% sum()\n\n\n\n\n\n\nround(sum(c(2.2,4.1,2,pi)))\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nc(2.2,4.1,2,pi) |&gt; sum() |&gt; round()\n# OR\nc(2.2,4.1,2,pi) %&gt;% sum() %&gt;% round()\n\n\n\n\n\n\nround(sum(c(2.2,4.1,2,pi)), digits = 3)\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nc(2.2,4.1,2,pi) |&gt; sum() |&gt; round(digits = 3)\n# OR\nc(2.2,4.1,2,pi) %&gt;% sum() %&gt;% round(digits = 3)"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part2.html#pipes",
+    "href": "MATERIAL/tutorial/part2.html#pipes",
+    "title": "Tutoial - Part 2 TutoRial - Part 2",
+    "section": "",
+    "text": "Pipes, expressed as %&gt;% or |&gt;, are very useful and make our code clearer. Using pipes, our data flow from one function to another.\n\n\n\nRewrite these chunks of code using the pipes\n\n\nsum(c(2.2,4.1,2,pi))\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nc(2.2,4.1,2,pi) |&gt; sum()\n# OR\nc(2.2,4.1,2,pi) %&gt;% sum()\n\n\n\n\n\n\nround(sum(c(2.2,4.1,2,pi)))\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nc(2.2,4.1,2,pi) |&gt; sum() |&gt; round()\n# OR\nc(2.2,4.1,2,pi) %&gt;% sum() %&gt;% round()\n\n\n\n\n\n\nround(sum(c(2.2,4.1,2,pi)), digits = 3)\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nc(2.2,4.1,2,pi) |&gt; sum() |&gt; round(digits = 3)\n# OR\nc(2.2,4.1,2,pi) %&gt;% sum() %&gt;% round(digits = 3)"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part2.html#tidy-the-data-with-tidyr",
+    "href": "MATERIAL/tutorial/part2.html#tidy-the-data-with-tidyr",
+    "title": "Tutoial - Part 2 TutoRial - Part 2",
+    "section": "Tidy the data with tidyr",
+    "text": "Tidy the data with tidyr\nAs seen in the slides, a tidy table has:\n\nEach variable in its own column\nEach observation in its own row\n\nTo reach this, tidyr has 4 key functions:\n\npivot_longer\npivot_wider\nunite\nseparate\n\n\nExercises\n\nIf this is not done yet, download the dataset zooplankton_seasonality.csv\n\n\n\n  Click here to download the dataset zooplankton_seasonality.csv\n\n\n\nImport the dataset in your environment\nIs this dataset a tidy dataset?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\nFirst 6 rows of the dataset zooplankton_seasonality\n\n\n\n\n\n\n\n\n\n\n\nMonth_abb\nYear\nStation\nCoordinates\nGroup\nTaxa\nBiomass\n\n\n\n\nJan\n2009\nBY15\n20.05000/57.33333\nCopepoda\nAcartia\n6.650319\n\n\nJan\n2009\nBY31\n18.23333/58.58812\nCopepoda\nAcartia\n1.816994\n\n\nJan\n2009\nBY5\n15.98333/55.25000\nCopepoda\nAcartia\n5.562097\n\n\nJan\n2009\nBY15\n20.05000/57.33333\nCopepoda\nCentropages\n5.738562\n\n\nJan\n2009\nBY31\n18.23333/58.58812\nCopepoda\nCentropages\n1.228759\n\n\nJan\n2009\nBY5\n15.98333/55.25000\nCopepoda\nCentropages\n14.405224\n\n\n\n\n\n Each variable has its own column   Each variable has its own row   Coordinates has 2 values\n\n\n\n\n\nSeparate the column Coordinates in 2 news columns: Longitude and Latitude\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(tidyr)\nzooplankton |&gt;\n  separate(Coordinates, into = c(\"Longitude\", \"Latitude\"), sep = \"/\")\n\n\n\n\nFirst 6 rows of the transformed dataset zooplankton_seasonality\n\n\n\n\n\n\n\n\n\n\n\n\nMonth_abb\nYear\nStation\nLongitude\nLatitude\nGroup\nTaxa\nBiomass\n\n\n\n\nJan\n2009\nBY15\n20.05000\n57.33333\nCopepoda\nAcartia\n6.650319\n\n\nJan\n2009\nBY31\n18.23333\n58.58812\nCopepoda\nAcartia\n1.816994\n\n\nJan\n2009\nBY5\n15.98333\n55.25000\nCopepoda\nAcartia\n5.562097\n\n\nJan\n2009\nBY15\n20.05000\n57.33333\nCopepoda\nCentropages\n5.738562\n\n\nJan\n2009\nBY31\n18.23333\n58.58812\nCopepoda\nCentropages\n1.228759\n\n\nJan\n2009\nBY5\n15.98333\n55.25000\nCopepoda\nCentropages\n14.405224\n\n\n\n\n\n\n\n\n\n\nCombine the column Groupand Taxa into a new column Group_Taxa and save the dataframe as tidy_df\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(tidyr)\ntidy_df &lt;-\n  zooplankton |&gt;\n  separate(Coordinates, into = c(\"Longitude\", \"Latitude\"), sep = \"/\") |&gt; \n  unite(\"Group_Taxa\", c(Group, Taxa))\n\n\n\n\nFirst 6 rows of the transformed dataset zooplankton_seasonality\n\n\n\n\n\n\n\n\n\n\n\nMonth_abb\nYear\nStation\nLongitude\nLatitude\nGroup_Taxa\nBiomass\n\n\n\n\nJan\n2009\nBY15\n20.05000\n57.33333\nCopepoda_Acartia\n6.650319\n\n\nJan\n2009\nBY31\n18.23333\n58.58812\nCopepoda_Acartia\n1.816994\n\n\nJan\n2009\nBY5\n15.98333\n55.25000\nCopepoda_Acartia\n5.562097\n\n\nJan\n2009\nBY15\n20.05000\n57.33333\nCopepoda_Centropages\n5.738562\n\n\nJan\n2009\nBY31\n18.23333\n58.58812\nCopepoda_Centropages\n1.228759\n\n\nJan\n2009\nBY5\n15.98333\n55.25000\nCopepoda_Centropages\n14.405224\n\n\n\n\n\n\n\n\n\n\nCreate a wide table with columns having the Biomass values for each Group_Taxa and save the dataframe as wide_df\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(tidyr)\nwide_df &lt;-\n  tidy_df |&gt; \n  pivot_wider(names_from = Group_Taxa, values_from = Biomass) \n\n\n\n\nFirst 6 rows of the transformed dataset zooplankton_seasonality\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonth_abb\nYear\nStation\nLongitude\nLatitude\nCopepoda_Acartia\nCopepoda_Centropages\nCopepoda_Pseudocalanus\nCopepoda_Temora\nRotatoria_Synchaeta\nCopepoda_Eurytemora\nRotatoria_Keratella\nCladocera_Bosmina\nCladocera_Evadne\nCladocera_Podon\n\n\n\n\nJan\n2009\nBY15\n20.05000\n57.33333\n6.650319\n5.7385615\n10.522882\n9.725488\n0.3921570\nNA\nNA\nNA\nNA\nNA\n\n\nJan\n2009\nBY31\n18.23333\n58.58812\n1.816994\n1.2287586\n5.633984\n4.993465\n0.4705890\nNA\nNA\nNA\nNA\nNA\n\n\nJan\n2009\nBY5\n15.98333\n55.25000\n5.562097\n14.4052240\n21.594775\n45.738529\n0.3921570\nNA\nNA\nNA\nNA\nNA\n\n\nJan\n2010\nBY15\n20.05000\n57.33333\n2.467319\n0.3071893\n13.601301\n7.549021\n0.1568628\nNA\nNA\nNA\nNA\nNA\n\n\nJan\n2010\nBY31\n18.23333\n58.58812\n2.248367\n0.3856208\n2.660128\n8.418301\n0.4117650\n0.0849674\nNA\nNA\nNA\nNA\n\n\nJan\n2011\nBY15\n20.05000\n57.33333\n5.065367\n2.9803908\n49.660135\n36.431384\n0.5490210\nNA\nNA\nNA\nNA\nNA"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part2.html#data-handling-with-dplyr",
+    "href": "MATERIAL/tutorial/part2.html#data-handling-with-dplyr",
+    "title": "Tutoial - Part 2 TutoRial - Part 2",
+    "section": "Data handling with dplyr",
+    "text": "Data handling with dplyr\nAfter finishing tidying the data, we often use the dplyr package to process our data.\n\nExercises\n\nWhat is the class of the Year columns of the tidy_df dataframe?  If they are not numeric, mutate them as numeric values.\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nstr(tidy_df)\n#&gt; tibble [2,956 × 7] (S3: tbl_df/tbl/data.frame)\n#&gt;  $ Month_abb : chr [1:2956] \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n#&gt;  $ Year      : chr [1:2956] \"2009\" \"2009\" \"2009\" \"2009\" ...\n#&gt;  $ Station   : chr [1:2956] \"BY15\" \"BY31\" \"BY5\" \"BY15\" ...\n#&gt;  $ Longitude : chr [1:2956] \"20.05000\" \"18.23333\" \"15.98333\" \"20.05000\" ...\n#&gt;  $ Latitude  : chr [1:2956] \"57.33333\" \"58.58812\" \"55.25000\" \"57.33333\" ...\n#&gt;  $ Group_Taxa: chr [1:2956] \"Copepoda_Acartia\" \"Copepoda_Acartia\" \"Copepoda_Acartia\" \"Copepoda_Centropages\" ...\n#&gt;  $ Biomass   : num [1:2956] 6.65 1.82 5.56 5.74 1.23 ...\n\nLongitude and Latitude are characters\n\nlibrary(dplyr)\ntidy_df |&gt; \n  mutate(Year = as.numeric(Year))\n\n\n\n\n\n\nThen, kepp all Year between 2012 and 2015\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(dplyr)\ntidy_df |&gt; \n  mutate(Longitude = as.numeric(Longitude),\n         Latitude = as.numeric(Latitude)) |&gt; \n  filter(Year %in% 2012:2015)\n\n\n\n\n\n\nThen, only keep the data from the Station BY31\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(dplyr)\ntidy_df |&gt; \n  mutate(Longitude = as.numeric(Longitude),\n         Latitude = as.numeric(Latitude)) |&gt; \n  filter(Year %in% 2012:2015) |&gt; \n  filter(Station == \"BY31\")\n\n# OR\n\ntidy_df |&gt; \n  mutate(Longitude = as.numeric(Longitude),\n         Latitude = as.numeric(Latitude)) |&gt; \n  filter(Year %in% 2012:2015,\n         Station == \"BY31\")\n\n\n\n\n\n\nThen, select all columns except Longitude and Latitude\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(dplyr)\ntidy_df |&gt; \n  mutate(Longitude = as.numeric(Longitude),\n         Latitude = as.numeric(Latitude)) |&gt; \n  filter(Year %in% 2012:2015,\n         Station == \"BY31\") |&gt; \n  select(-Longitude,\n         -Latitude)\n\n\n\n\n\n\nThen, rename Month_abb as Month\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(dplyr)\ntidy_df |&gt; \n  mutate(Longitude = as.numeric(Longitude),\n         Latitude = as.numeric(Latitude)) |&gt; \n  filter(Year %in% 2012:2015,\n         Station == \"BY31\") |&gt; \n  select(-Longitude,\n         -Latitude) |&gt; \n  rename(Month = Month_abb)\n\n\n\n\n\n\nThen, group_by: Month and Group_Taxa and take the Biomass average and standard deviation and save the dataframe as summarized_df\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(dplyr)\nsummarised_df &lt;-\n  tidy_df |&gt; \n  mutate(Longitude = as.numeric(Longitude),\n         Latitude = as.numeric(Latitude)) |&gt; \n  filter(Year %in% 2012:2015,\n         Station == \"BY31\") |&gt; \n  select(-Longitude,\n         -Latitude) |&gt; \n  rename(Month = Month_abb) |&gt; \n  group_by(Month, Group_Taxa) |&gt; \n  summarise(average = mean(Biomass),\n            standard_deviation = sd(Biomass))"
+  },
+  {
+    "objectID": "MATERIAL/tutorial/part2.html#ploting-the-data-with-ggplot2",
+    "href": "MATERIAL/tutorial/part2.html#ploting-the-data-with-ggplot2",
+    "title": "Tutoial - Part 2 TutoRial - Part 2",
+    "section": "Ploting the data with ggplot2",
+    "text": "Ploting the data with ggplot2\nIn this part, we will build a plot step by step using the grammar of graphic in ggplot2\n\nLoad the package and only keep the values for the copepod Acartia from the summarised_df dataset in a new dataset called acartia\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nlibrary(ggplot2)\nacartia &lt;-\n  summarised_df |&gt; \n  filter(Group_Taxa == \"Copepoda_Acartia\")\n\n\n\n\n\n\nInitiate a ggplot with the dataset acartia with the Month as the x-axis and the average biomass as the y-axis\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nggplot(data = acartia,\n       mapping = aes(x = Month, y = average))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd a barplot geometry to the plot\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nggplot(data = acartia,\n       mapping = aes(x = Month, y = average)) +\n  geom_bar(stat = \"identity\") # &lt;- this is needed for the barplot geometry\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nArrange the bar from the lowest to the highest values\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nggplot(data = acartia,\n       mapping = aes(x = reorder(Month, average), y = average)) +\n  geom_bar(stat = \"identity\") # &lt;- this is needed for the barplot geometry\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd a color filling in the bars according the Month\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nggplot(data = acartia,\n       mapping = aes(x = reorder(Month, average), y = average, fill = Month)) +\n  geom_bar(stat = \"identity\") # &lt;- this is needed for the barplot geometry\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChange the axis as Biomass and Month, and add a title\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nggplot(data = acartia,\n       mapping = aes(x = reorder(Month, average), y = average, fill = Month)) +\n  geom_bar(stat = \"identity\") + # &lt;- this is needed for the barplot geometry\n  labs(x = \"Month\", y = \"Biomass\", title = \"My nice ggplot\")"
+  },
+  {
+    "objectID": "MATERIAL/index.html",
+    "href": "MATERIAL/index.html",
+    "title": "MATERIAL",
+    "section": "",
+    "text": "05-Sep-2024 (Thursday)\nIntroduction to R\nSlides\nTutorial\n\n\n06-Sep-2024 (Friday)\nData handling and visualisation\nSlides\nTutorial"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#plan-for-todays-lecture",
+    "href": "MATERIAL/slides/part1.html#plan-for-todays-lecture",
+    "title": "Introduction to R",
+    "section": "Plan for today’s lecture",
+    "text": "Plan for today’s lecture\n\nThe R syntax\nThe R studio software\nVariables, functions and vectors\nImporting data"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#why-using-r",
+    "href": "MATERIAL/slides/part1.html#why-using-r",
+    "title": "Introduction to R",
+    "section": "Why using R?",
+    "text": "Why using R?\n\n\nPro\n🤑 Free  🔓 Open source  🥼 Reproducible science\n\n# You can keep track of all the data analysis steps\n2 + 2 + 3       # step 1\n#&gt; [1] 7\nlog(2 + 2 + 3)  # step 2\n#&gt; [1] 1.94591"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#why-using-r-1",
+    "href": "MATERIAL/slides/part1.html#why-using-r-1",
+    "title": "Introduction to R",
+    "section": "Why using R?",
+    "text": "Why using R?\n\n\nPro\n🤑 Free  🔓 Open source  🥼 Reproducible science\n\n# You can keep track of all the data analysis steps\n2 + 2 + 3       # step 1\n#&gt; [1] 7\nlog(2 + 2 + 3)  # step 2\n#&gt; [1] 1.94591\n\n\nCons\n👻 Scary  🧑‍💻 Syntax\n\nx = 1:100 ; y = log(x)\nlibrary(ggplot2)\nggplot() +\n  geom_line(mapping = aes(x = x,\n                          y = y),\n            col = \"firebrick\",\n            linewidth = 2) +\n  theme_classic()+\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        axis.title = element_text(size = 23)) +\n  labs(x = \"Time\",\n       y = \"Skills\")"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#why-using-r-2",
+    "href": "MATERIAL/slides/part1.html#why-using-r-2",
+    "title": "Introduction to R",
+    "section": "Why using R?",
+    "text": "Why using R?\n\n\nPro\n🤑 Free  🔓 Open source  🥼 Reproducible science\n\n# You can keep track of all the data analysis steps\n2 + 2 + 3       # step 1\n#&gt; [1] 7\nlog(2 + 2 + 3)  # step 2\n#&gt; [1] 1.94591\n\n\nCons\n👻 Scary  🧑‍💻 Syntax"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#r-studio-is-a-great-tool-to-use-r",
+    "href": "MATERIAL/slides/part1.html#r-studio-is-a-great-tool-to-use-r",
+    "title": "Introduction to R",
+    "section": "R studio is a great tool to use R",
+    "text": "R studio is a great tool to use R\nOn one window it combines:\n\nEnvironment\nConsole\nScript\nPlot, help, …"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#r-is-open-and-free",
+    "href": "MATERIAL/slides/part1.html#r-is-open-and-free",
+    "title": "Introduction to R",
+    "section": "R is open and free",
+    "text": "R is open and free\n\nPeople have worked on it and created tools and function that anyone case use!\n\n\n\nR base functions are already accessible when we open R\nMore function from other packages 📦 can be loaded"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#how-to-install-and-load-packages",
+    "href": "MATERIAL/slides/part1.html#how-to-install-and-load-packages",
+    "title": "Introduction to R",
+    "section": "How to install and load packages",
+    "text": "How to install and load packages\n\nA package need to be installed only once\nTo use functions within a package call it using library()\n\n\ninstall.packages(\"PackageName\")\nlibrary(PackageName)\n\n\n\nOnce the package is installed we can look at the version of the package and how to cite it.\n\n\npackageVersion(\"PackageName\")\ncitation(\"PackageName\")"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#r-syntax",
+    "href": "MATERIAL/slides/part1.html#r-syntax",
+    "title": "Introduction to R",
+    "section": "R syntax",
+    "text": "R syntax\n\nLike Excel, or a calculator R can help us resolve “basic” operations\n\n\n2 + 2\n#&gt; [1] 4"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#r-syntax-1",
+    "href": "MATERIAL/slides/part1.html#r-syntax-1",
+    "title": "Introduction to R",
+    "section": "R syntax",
+    "text": "R syntax\n\nLike Excel, or a calculator R can help us resolve “basic” operations\n\n\n2 + 2\n#&gt; [1] 4\n4 * 4\n#&gt; [1] 16"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#r-syntax-2",
+    "href": "MATERIAL/slides/part1.html#r-syntax-2",
+    "title": "Introduction to R",
+    "section": "R syntax",
+    "text": "R syntax\n\nLike Excel, or a calculator R can help us resolve “basic” operations\n\n\n2 + 2\n#&gt; [1] 4\n4 * 4\n#&gt; [1] 16\n(5 + 4) / (1 - 4 ^ 2)\n#&gt; [1] -0.6"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#r-syntax-3",
+    "href": "MATERIAL/slides/part1.html#r-syntax-3",
+    "title": "Introduction to R",
+    "section": "R syntax",
+    "text": "R syntax\n\nLike Excel, or a calculator R can help us resolve “basic” operations\n\n\n2 + 2\n#&gt; [1] 4\n4 * 4\n#&gt; [1] 16\n(5 + 4) / (1 - 4 ^ 2)\n#&gt; [1] -0.6\n\n\nBut also more complex operations"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#values",
+    "href": "MATERIAL/slides/part1.html#values",
+    "title": "Introduction to R",
+    "section": "Values",
+    "text": "Values\nIn R values can be of several categories:\n\nLogical: TRUE or FALSE\nNumeric: 3 or 3.2\nCharacter: \"t\", \"blue\" or \"this is a character\"\n\n\nWe can ask R the category of our values\n\nclass(TRUE)\n#&gt; [1] \"logical\""
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#values-1",
+    "href": "MATERIAL/slides/part1.html#values-1",
+    "title": "Introduction to R",
+    "section": "Values",
+    "text": "Values\nIn R values can be of several categories:\n\nLogical: TRUE or FALSE\nNumeric: 3 or 3.2\nCharacter: \"t\", \"blue\" or \"this is a character\"\n\nWe can ask R the category of our values\n\nclass(TRUE)\n#&gt; [1] \"logical\"\nclass(3)\n#&gt; [1] \"numeric\""
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#values-2",
+    "href": "MATERIAL/slides/part1.html#values-2",
+    "title": "Introduction to R",
+    "section": "Values",
+    "text": "Values\nIn R values can be of several categories:\n\nLogical: TRUE or FALSE\nNumeric: 3 or 3.2\nCharacter: \"t\", \"blue\" or \"this is a character\"\n\nWe can ask R the category of our values\n\nclass(TRUE)\n#&gt; [1] \"logical\"\nclass(3)\n#&gt; [1] \"numeric\"\nclass(\"t\")\n#&gt; [1] \"character\""
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#values-3",
+    "href": "MATERIAL/slides/part1.html#values-3",
+    "title": "Introduction to R",
+    "section": "Values",
+    "text": "Values\nIn R values can be of several categories:\n\nLogical: TRUE or FALSE\nNumeric: 3 or 3.2\nCharacter: \"t\", \"blue\" or \"this is a character\"\n\nWe can ask R the category of our values\n\nclass(TRUE)\n#&gt; [1] \"logical\"\nclass(3)\n#&gt; [1] \"numeric\"\nclass(\"t\")\n#&gt; [1] \"character\"\nclass(pi)\n#&gt; [1] \"numeric\""
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#assigning-variables",
+    "href": "MATERIAL/slides/part1.html#assigning-variables",
+    "title": "Introduction to R",
+    "section": "Assigning variables",
+    "text": "Assigning variables\nWe can create variables that contain our values.\nTo do so, use &lt;- or =\n\nvariable &lt;- value\n\n\nIf we want to create a variable x that is equal to the value 3 and y that is equal to the value \"blue\"\n\nx &lt;- 3\ny &lt;- \"blue\"\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nDo not mix with == that test if the values are equals.\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe opposite of == is !=\n\n\n\n\n\n\n\nThe variables are then stored in our “environment” and we can reuse them\n\nx * 2 + x^x\n#&gt; [1] 33"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#functions",
+    "href": "MATERIAL/slides/part1.html#functions",
+    "title": "Introduction to R",
+    "section": "Functions",
+    "text": "Functions\nR uses functions that all have the same structure: function_name(argument, ...)\n\nlog(argument1)\nplot(argument1, argument2, ...)\n\n\nIt is impossible to know everything by heart and what arguments are needed.\nFortunately, manuals for each function exists using ? before the function name.\n\n?log()"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#vectors",
+    "href": "MATERIAL/slides/part1.html#vectors",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nR stores values in vectors or arrays that can be created in different ways:\n\nvector1 &lt;- c(1, 2, 3) ; print(vector1)\n#&gt; [1] 1 2 3"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#vectors-1",
+    "href": "MATERIAL/slides/part1.html#vectors-1",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nR stores values in vectors or arrays that can be created in different ways:\n\nvector1 &lt;- c(1, 2, 3) ; print(vector1)\n#&gt; [1] 1 2 3\nvector2 &lt;- seq(from = 3, to = 4, by = 0.34) ; print(vector2)\n#&gt; [1] 3.00 3.34 3.68"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#vectors-2",
+    "href": "MATERIAL/slides/part1.html#vectors-2",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nR stores values in vectors or arrays that can be created in different ways:\n\nvector1 &lt;- c(1, 2, 3) ; print(vector1)\n#&gt; [1] 1 2 3\nvector2 &lt;- seq(from = 3, to = 4, by = 0.34) ; print(vector2)\n#&gt; [1] 3.00 3.34 3.68\nvector3 &lt;- rep(\"blue\", 2) ; print(vector3)\n#&gt; [1] \"blue\" \"blue\""
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#vectors-3",
+    "href": "MATERIAL/slides/part1.html#vectors-3",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nR stores values in vectors or arrays that can be created in different ways:\n\nvector1 &lt;- c(1, 2, 3) ; print(vector1)\n#&gt; [1] 1 2 3\nvector2 &lt;- seq(from = 3, to = 4, by = 0.34) ; print(vector2)\n#&gt; [1] 3.00 3.34 3.68\nvector3 &lt;- rep(\"blue\", 2) ; print(vector3)\n#&gt; [1] \"blue\" \"blue\"\nvector4 &lt;- c(vector1, vector2) ; print(vector4)\n#&gt; [1] 1.00 2.00 3.00 3.00 3.34 3.68"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#vectors-4",
+    "href": "MATERIAL/slides/part1.html#vectors-4",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nR stores values in vectors or arrays that can be created in different ways:\n\nvector1 &lt;- c(1, 2, 3) ; print(vector1)\n#&gt; [1] 1 2 3\nvector2 &lt;- seq(from = 3, to = 4, by = 0.34) ; print(vector2)\n#&gt; [1] 3.00 3.34 3.68\nvector3 &lt;- rep(\"blue\", 2) ; print(vector3)\n#&gt; [1] \"blue\" \"blue\"\nvector4 &lt;- c(vector1, vector2) ; print(vector4)\n#&gt; [1] 1.00 2.00 3.00 3.00 3.34 3.68\n\nWe use these vectors to do our calculations:\n\nvector1 * vector2\n#&gt; [1]  3.00  6.68 11.04\nmean(vector2)\n#&gt; [1] 3.34\nsd(vector4)\n#&gt; [1] 0.9924314\nmax(vector1)\n#&gt; [1] 3"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#importing-data",
+    "href": "MATERIAL/slides/part1.html#importing-data",
+    "title": "Introduction to R",
+    "section": "Importing data",
+    "text": "Importing data\nThe best way to do so is to use: read.*(file = \"/your/file.*\", sep = \"/t\", dec = \",\")\n\n\nWhere * is:\n\ncsv - comma-separated values\ncsv2 - semicolon-separated values, with comma as the decimal mark\ndelim - any delimited files\n\n\n\n\n\nfile corresponds to the path of the file\n\n\n\n\nsep specifies the separator mark\n\n\n\n\ndec specifies the decimal mark"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#plan-for-the-next-session",
+    "href": "MATERIAL/slides/part1.html#plan-for-the-next-session",
+    "title": "Introduction to R",
+    "section": "Plan for the next session",
+    "text": "Plan for the next session\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to tidyverse\nPipe the data using magrittr\nClean the data using tidyr\nArrange the data using dplyr\nPlot using ggplot2"
+  },
+  {
+    "objectID": "MATERIAL/slides/part1.html#do-not-hesitate-to-use-google-to-get-help",
+    "href": "MATERIAL/slides/part1.html#do-not-hesitate-to-use-google-to-get-help",
+    "title": "Introduction to R",
+    "section": "Do not hesitate to use google to get help !",
+    "text": "Do not hesitate to use google to get help !\nIf you have an issue with something, you are probably not the first and someone asked a solution on a forum !"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#plan-for-todays-lecture",
+    "href": "MATERIAL/slides/part2.html#plan-for-todays-lecture",
+    "title": "Data handling and visualisation in R",
+    "section": "Plan for today’s lecture",
+    "text": "Plan for today’s lecture\n\nIntroduction to tidyverse\nPipe the data using magrittr\nClean the data using tidyr\nArrange the data using dplyr\nPlot using ggplot2"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidyverse",
+    "href": "MATERIAL/slides/part2.html#tidyverse",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidyverse",
+    "text": "Tidyverse\n\n\n\n\n\ntidyverse is a collection of packages\nIt is now a standard in data analysis\nIt is easier to read and keep track of what is happening with the pipe operator %&gt;%\n\n\n\n\n\nThe book is available online"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#pipe-the-data-using-magrittr",
+    "href": "MATERIAL/slides/part2.html#pipe-the-data-using-magrittr",
+    "title": "Data handling and visualisation in R",
+    "section": "Pipe the data using magrittr",
+    "text": "Pipe the data using magrittr\n%&gt;% takes the data from the left and place it to the right\n\nx %&gt;% function() = function(x)\n\n\n\nWithout the pipe operator:\n\niris_subset &lt;- iris[, c(\"Species\", \"Sepal.Length\", \"Sepal.Width\")]\niris_subset$Sepal_Ratio &lt;- iris_subset$Sepal.Length / iris_subset$Sepal.Width\n\naggregate(Sepal_Ratio ~ Species, data = iris_subset, \n                    FUN = function(x) c(Average_ratio = mean(x), \n                                        standard_deviation = sd(x)))\n\n\nWith the pipe operator:\n\nlibrary(magrittr)\niris %&gt;% \n  dplyr::select(Species, Sepal.Length, Sepal.Width) %&gt;%\n  dplyr::mutate(Sepal_Ratio = Sepal.Length/Sepal.Width) %&gt;%\n  dplyr::group_by(Species)%&gt;%\n  dplyr::summarise(Average_ratio = mean(Sepal_Ratio),\n                   standard_deviation = sd(Sepal_Ratio))\n\n\n\n\n\nR 4.1.0 introduced a native pipe operator, |&gt;"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr",
+    "href": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidy the data with tidyr",
+    "text": "Tidy the data with tidyr\n\n\nA table is tidy if:\n\nEach variable is in its own column\nEach observation is in its own row\n\n\nKey functions:\n\npivot_longer\npivot_wider\nunite\nseparate\n\n\n\n\n \nsource: https://r4ds.had.co.nz/tidy-data.html"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---iris-example",
+    "href": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---iris-example",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidy the data with tidyr - iris example",
+    "text": "Tidy the data with tidyr - iris example\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\nid\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n1\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n2\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n3\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n4\n\n\n\n\n\n\n\n\niris %&lt;&gt;% dplyr::mutate(id = 1:150)\niris |&gt; head(4)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---pivot_longer",
+    "href": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---pivot_longer",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidy the data with tidyr - pivot_longer",
+    "text": "Tidy the data with tidyr - pivot_longer\n\n\n\n\n\nSpecies\nid\nParameter\nSize\n\n\n\n\nsetosa\n1\nSepal.Length\n5.1\n\n\nsetosa\n1\nSepal.Width\n3.5\n\n\nsetosa\n1\nPetal.Length\n1.4\n\n\nsetosa\n1\nPetal.Width\n0.2\n\n\n\n\n\n\n\n\nlong_iris &lt;- iris |&gt; \n  tidyr::pivot_longer(1:4,\n                      names_to = \"Parameter\",\n                      values_to = \"Size\")\nlong_iris |&gt; head(4)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---separate",
+    "href": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---separate",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidy the data with tidyr - separate",
+    "text": "Tidy the data with tidyr - separate\n\n\n\n\n\nSpecies\nid\nOrgan\nMeasure\nSize\n\n\n\n\nsetosa\n1\nSepal\nLength\n5.1\n\n\nsetosa\n1\nSepal\nWidth\n3.5\n\n\nsetosa\n1\nPetal\nLength\n1.4\n\n\nsetosa\n1\nPetal\nWidth\n0.2\n\n\n\n\n\n\n\n\nsep_iris &lt;- long_iris |&gt; \n  tidyr::separate(Parameter, into = c(\"Organ\", \"Measure\"))\nsep_iris |&gt; head(4)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---pivot_wider",
+    "href": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---pivot_wider",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidy the data with tidyr - pivot_wider",
+    "text": "Tidy the data with tidyr - pivot_wider\n\n\n\n\n\nSpecies\nid\nMeasure\nSepal\nPetal\n\n\n\n\nsetosa\n1\nLength\n5.1\n1.4\n\n\nsetosa\n1\nWidth\n3.5\n0.2\n\n\nsetosa\n2\nLength\n4.9\n1.4\n\n\nsetosa\n2\nWidth\n3.0\n0.2\n\n\n\n\n\n\n\n\nwide_iris &lt;- sep_iris |&gt; \n  tidyr::pivot_wider(names_from = \"Organ\",\n                     values_from = \"Size\")\nwide_iris |&gt;  head(4)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---unite",
+    "href": "MATERIAL/slides/part2.html#tidy-the-data-with-tidyr---unite",
+    "title": "Data handling and visualisation in R",
+    "section": "Tidy the data with tidyr - unite",
+    "text": "Tidy the data with tidyr - unite\n\n\n\n\n\nSpecies\nid\nMeasure\nSepal/Petal\n\n\n\n\nsetosa\n1\nLength\n5.1/1.4\n\n\nsetosa\n1\nWidth\n3.5/0.2\n\n\nsetosa\n2\nLength\n4.9/1.4\n\n\nsetosa\n2\nWidth\n3/0.2\n\n\n\n\n\n\n\n\nunite_iris &lt;- wide_iris |&gt; \n  tidyr::unite(col = \"Sepal/Petal\", c(Sepal, Petal), sep = \"/\")\nunite_iris |&gt;  head(4)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#arrange-the-data-with-dyplr",
+    "href": "MATERIAL/slides/part2.html#arrange-the-data-with-dyplr",
+    "title": "Data handling and visualisation in R",
+    "section": "Arrange the data with dyplr",
+    "text": "Arrange the data with dyplr\ndplyr simplifies the data manipulation with self-explanatory functions:\n\nfilter observations based on their values\nmutate a new column as a function of others\nselect variables based on their names\ngroup_by variable\nsummarise the data\n\n\niris %&gt;%\n  dplyr::filter(Petal.Length &gt;= 1.4) %&gt;%\n  dplyr::mutate(Sepal_Ratio = Sepal.Length/Sepal.Width) %&gt;%\n  dplyr::select(Species, Sepal_Ratio) %&gt;% # equaivalent to select(-c(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width))\n  dplyr::group_by(Species) %&gt;%\n  dplyr::summarise(Average_ratio = mean(Sepal_Ratio),\n                   standard_deviation = sd(Sepal_Ratio))"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#data-visulalisation",
+    "href": "MATERIAL/slides/part2.html#data-visulalisation",
+    "title": "Data handling and visualisation in R",
+    "section": "Data visulalisation",
+    "text": "Data visulalisation\nIt is very important to look at the data.  Totally different data might have similar statistics…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstatistics\nvalue\n\n\n\n\nmean_x\n54.27\n\n\nmean_y\n47.83\n\n\nsd_x\n16.77\n\n\nsd_y\n26.94\n\n\n\n\n\n\n\n\n\n\n\nsource: datasauRus"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#visualise-the-data-with-ggplot2",
+    "href": "MATERIAL/slides/part2.html#visualise-the-data-with-ggplot2",
+    "title": "Data handling and visualisation in R",
+    "section": "Visualise the data with ggplot2",
+    "text": "Visualise the data with ggplot2\n\n\n\n\n\n\n\n\n\n\n\n\nspecies_palette &lt;- c(\"#F8766D\", \"#00BA38\", \"#619CFF\")\nsize_vector &lt;- iris$Petal.Width\nplot(x = iris$Sepal.Length,\n     y = iris$Sepal.Width,\n     col = species_palette[iris$Species],\n     bg = species_palette[iris$Species],\n     pch = 21,\n     cex = size_vector,\n     xlim = c(min(iris$Sepal.Length), max(iris$Sepal.Length)),\n     ylim = c(min(iris$Sepal.Width), max(iris$Sepal.Width)),\n     xlab = \"Sepal.Length\",\n     ylab = \"Sepal.Width\")\nlegend(\"topright\", legend = levels(iris$Species), col = species_palette, pch = 21, pt.bg = species_palette, cex = 1.2, title = \"Species\")\ngrid(lwd = 1, lty = \"dotted\")\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nggplot(iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     fill = Species,\n                     size = Petal.Width)) +\n  geom_point(shape = 21,\n             col = 1) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#grammar-of-graphic-gg",
+    "href": "MATERIAL/slides/part2.html#grammar-of-graphic-gg",
+    "title": "Data handling and visualisation in R",
+    "section": "Grammar of graphic (gg)",
+    "text": "Grammar of graphic (gg)\n\n\n\n\nData\nAesthetics - Visual characteristics (e.g., x, y, size)\nGeometry - How to represent the data (e.g., lines, point, boxplot)\n\n\n\nStatistics - What statistics to show\nFacets - Split the data\nCoordinates - Position of the geometry\nThemes - Visual changes\n\n\n\nggplot(data = &lt;DATA&gt;,\n       mapping = aes(&lt;AESTHETICS&gt;)) +\n  geom_&lt;GEOMETRY&gt;()"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---data",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---data",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Data",
+    "text": "Let’s plot using ggplot2 - Data\n\n\n\nggplot(data = iris)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---aesthetics",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---aesthetics",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Aesthetics",
+    "text": "Let’s plot using ggplot2 - Aesthetics\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width))"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---geometry",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---geometry",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Geometry",
+    "text": "Let’s plot using ggplot2 - Geometry\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width)) +\n  geom_point()"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---geometry-1",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---geometry-1",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Geometry",
+    "text": "Let’s plot using ggplot2 - Geometry\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width)) +\n  geom_point(mapping = aes(col = Species))"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---statistics",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---statistics",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Statistics",
+    "text": "Let’s plot using ggplot2 - Statistics\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width)) +\n  geom_point(mapping = aes(col = Species)) +\n  stat_smooth(method = \"lm\")"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---statistics-1",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---statistics-1",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Statistics",
+    "text": "Let’s plot using ggplot2 - Statistics\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\")"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---facets",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---facets",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Facets",
+    "text": "Let’s plot using ggplot2 - Facets\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species)"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---coordinates",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---coordinates",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Coordinates",
+    "text": "Let’s plot using ggplot2 - Coordinates\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species)+\n  coord_fixed(xlim = c(4,8), ylim = c(0,5))"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---themes",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---themes",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Themes",
+    "text": "Let’s plot using ggplot2 - Themes\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species) +\n  coord_fixed(xlim = c(4,8), ylim = c(0,5)) +\n  theme_light()"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---themes-1",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---themes-1",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Themes",
+    "text": "Let’s plot using ggplot2 - Themes\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species) +\n  coord_fixed(xlim = c(4,8), ylim = c(0,5)) +\n  theme_light() +\n  theme(axis.line = element_line(color = \"red\"))"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---themes-2",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---themes-2",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Themes",
+    "text": "Let’s plot using ggplot2 - Themes\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species) +\n  coord_fixed(xlim = c(4,8), ylim = c(0,5)) +\n  theme_light() +\n  theme(axis.line = element_line(color = \"red\"),\n        strip.text = element_text(size = 13, color = \"pink\"))"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---extra-tips",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---extra-tips",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Extra tips",
+    "text": "Let’s plot using ggplot2 - Extra tips\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species)+\n  coord_fixed(xlim = c(4,8), ylim = c(0,5)) +\n  theme_light() +\n  theme(axis.line = element_line(color = \"red\"),\n        strip.text = element_text(size = 13, color = \"pink\")) +\n  labs(title = \"Sepal\", x = \"Length\" , y = \"Width\", subtitle = \"relationship between width\\nand length\", caption = \"Caption appear here\")"
+  },
+  {
+    "objectID": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---extra-tips-1",
+    "href": "MATERIAL/slides/part2.html#lets-plot-using-ggplot2---extra-tips-1",
+    "title": "Data handling and visualisation in R",
+    "section": "Let’s plot using ggplot2 - Extra tips",
+    "text": "Let’s plot using ggplot2 - Extra tips\n\n\n\nggplot(data = iris,\n       mapping = aes(x = Sepal.Length,\n                     y = Sepal.Width,\n                     col = Species)) +\n  geom_point() +\n  stat_smooth(method = \"lm\") +\n  facet_wrap(~Species)+\n  coord_fixed(xlim = c(4,8), ylim = c(0,5)) +\n  theme_light() +\n  theme(axis.line = element_line(color = \"red\"),\n        strip.text = element_text(size = 13, color = \"pink\")) +\n  labs(title = \"Sepal\", x = \"Length\" , y = \"Width\", subtitle = \"relationship between width\\nand length\", caption = \"Caption appear here\") +\n  scale_color_manual(values = c(\"forestgreen\", \"firebrick\", \"burlywood\"))"
+  }
+]
