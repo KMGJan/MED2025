@@ -1,0 +1,36 @@
+/* css styles */
+.button {
+  background-color: #453b3b;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.linkcode {
+  background-color: white;
+}
+
+.slides {
+  background-color: #0e5220;
+  border: none;
+  color: #faf5af;
+  padding: 5px 5px;
+  border-radius: 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tutorial {
+  background-color: #faf5af;
+  border: none;
+  color: #0e5220;
+  padding: 5px 5px;
+  border-radius: 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}

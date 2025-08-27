@@ -1,0 +1,44 @@
+---
+title: "Introduction to R"
+toc: false
+---
+
+### Marine Ecosystem Dynamics
+
+
+#### September 2025
+
+On this website, material for the introduction to R are made available.
+
+In the [MATERIAL](MATERIAL/index.qmd){.button} tab, slides and exercises can be found.
+
+----
+
+
+During this introduction, we will learn how to use ![](./assets/images/Rlogo.svg){height=1.5em style=margin-bottom;} in ![](./assets/images/RSTUDIO.png){height=1.5em style=margin-bottom;} to handle data.
+
+Install [R](https://www.r-project.org/){target="_blank"} and [R studio](https://posit.co/download/rstudio-desktop/){target="_blank"} before the start of the lecture !
+
+----
+
+::: columns
+::: {.column width="\"50%"}
+### Day 1
+
+- R syntax
+- Import Data
+
+:::
+
+::: {.column width="\"40%"}
+### Day 2
+- Pipe the data using [`magrittr`](https://magrittr.tidyverse.org/){target="_blank"}
+- Tidy the data using [`tidyr`](https://tidyr.tidyverse.org/){target="_blank"}
+- Arrange the data using [`dplyr`](https://dplyr.tidyverse.org/){target="_blank"}
+- Visualise the data using [`ggplot2`](https://ggplot2.tidyverse.org/){target="_blank"}
+:::
+:::
+
+The data we will use are all available in the package [`PlanktonData`](https://kmgjan.github.io/PlanktonData/){target="_blank"}
+
+

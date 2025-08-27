@@ -1,0 +1,542 @@
+---
+title: "[Tuto{{< fa brands r-project >}}ial - Part 2]{.no-print} [TutoRial - Part 2]{.print-only}"
+subtitle: "Marine Ecosystem Dynamics - 2025"
+author: "Kinlan M.G. Jan"
+format:
+  html:
+    html-math-method: katex
+    toc: true
+    toc-title: "Tuto{{< fa brands r-project >}}ial 2"
+    toc-depth: 3
+  pdf:
+    pdf-engine: weasyprint
+css: tutorial.css
+format-links: [pdf]
+---
+
+
+## Pipes
+
+Pipes, expressed as `%>%` or `|>`, are very useful and make our code clearer. Using pipes, our data *flow* from one function to another.
+
+### Exercises
+
+- Rewrite these chunks of code using the pipes
+
+```{r}
+#| echo: true
+#| eval: false
+sum(c(2.2,4.1,2,pi))
+```
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+c(2.2,4.1,2,pi) |> sum()
+# OR
+c(2.2,4.1,2,pi) %>% sum()
+```
+:::
+:::
+
+```{r}
+#| echo: true
+#| eval: false
+round(sum(c(2.2,4.1,2,pi)))
+```
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+c(2.2,4.1,2,pi) |> sum() |> round()
+# OR
+c(2.2,4.1,2,pi) %>% sum() %>% round()
+```
+:::
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+round(sum(c(2.2,4.1,2,pi)), digits = 3)
+```
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+c(2.2,4.1,2,pi) |> sum() |> round(digits = 3)
+# OR
+c(2.2,4.1,2,pi) %>% sum() %>% round(digits = 3)
+```
+:::
+:::
+
+## Tidy the data with `tidyr`
+
+As seen in the slides, a tidy table has:
+
+1. Each variable in its own column
+2. Each observation in its own row
+
+To reach this, `tidyr` has 4 key functions:
+
+1. `pivot_longer`
+2. `pivot_wider`
+3. `unite`
+4. `separate`
+
+### Exercises
+
+* If this is not done yet, download the dataset `zooplankton_seasonality.csv`
+
+```{r, echo=FALSE, results='asis'}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+if (knitr::is_html_output()) {
+  library("downloadthis");library(PlanktonData)
+  data(zooplankton)
+  zooplankton  |> 
+    download_this(
+    output_name = "zooplankton_seasonality",
+    output_extension = ".csv",
+    button_label = " Click here to download the dataset zooplankton_seasonality.csv",
+    button_type = "primary",
+    has_icon = TRUE,
+    csv2 = FALSE,
+    icon = "fa fa-save")
+} else {
+  cat("You can download the dataset on [GitHub](https://github.com/KMGJan/MED2024/tree/main/MATERIAL/tutorial/assets)")
+}
+```
+
+
+* Import the dataset in your environment
+
+* Is this dataset a tidy dataset?
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: false
+#| eval: true
+PlanktonData::zooplankton |> head() |> kableExtra::kable(caption = "First 6 rows of the dataset zooplankton_seasonality")
+```
+
+{{< fa check >}} Each variable has its own column <br>
+{{< fa check >}} Each variable has its own row <br>
+{{< fa xmark >}} Coordinates has 2 values
+:::
+:::
+
+* Separate the column `Coordinates` in 2 news columns: `Longitude` and `Latitude`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+library(tidyr)
+zooplankton |>
+  separate(Coordinates, into = c("Longitude", "Latitude"), sep = "/")
+```
+
+```{r}
+#| echo: false
+#| eval: true
+library(tidyr)
+PlanktonData::zooplankton |> separate(Coordinates, into = c("Longitude", "Latitude"), sep = "/") |>  head() |> kableExtra::kable(caption = "First 6 rows of the transformed dataset zooplankton_seasonality")
+```
+
+
+:::
+:::
+
+* Combine the column `Group`and `Taxa` into a new column `Group_Taxa` and save the dataframe as `tidy_df`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: false
+library(tidyr)
+tidy_df <-
+  zooplankton |>
+  separate(Coordinates, into = c("Longitude", "Latitude"), sep = "/") |> 
+  unite("Group_Taxa", c(Group, Taxa))
+```
+
+```{r}
+#| echo: false
+#| eval: true
+library(tidyr)
+tidy_df <-
+  PlanktonData::zooplankton |>
+  separate(Coordinates, into = c("Longitude", "Latitude"), sep = "/") |>  
+  unite("Group_Taxa", c(Group, Taxa))
+tidy_df |> 
+  head() |> 
+  kableExtra::kable(caption = "First 6 rows of the transformed dataset zooplankton_seasonality")
+```
+
+
+:::
+:::
+
+* Create a wide table with columns having the `Biomass` values for each `Group_Taxa` and save the dataframe as `wide_df`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: false
+library(tidyr)
+wide_df <-
+  tidy_df |> 
+  pivot_wider(names_from = Group_Taxa, values_from = Biomass) 
+```
+
+```{r}
+#| echo: false
+#| eval: true
+library(tidyr)
+wide_df <- 
+  tidy_df |> 
+  pivot_wider(names_from = Group_Taxa, values_from = Biomass) 
+
+wide_df |> 
+  head() |> 
+  kableExtra::kable(caption = "First 6 rows of the transformed dataset zooplankton_seasonality")
+```
+
+:::
+:::
+
+## Data handling with `dplyr`
+
+After finishing tidying the data, we often use the `dplyr` package to process our data.
+
+### Exercises
+
+* What is the class of the `Year` columns of the `tidy_df` dataframe? <br> If they are not numeric, `mutate` them as numeric values.
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: true
+str(tidy_df)
+```
+
+`Longitude` and `Latitude` are characters
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+library(dplyr)
+tidy_df |> 
+  mutate(Year = as.numeric(Year))
+```
+
+:::
+:::
+
+* Then, kepp all `Year` between `2012` and `2015`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+library(dplyr)
+tidy_df |> 
+  mutate(Longitude = as.numeric(Longitude),
+         Latitude = as.numeric(Latitude)) |> 
+  filter(Year %in% 2012:2015)
+```
+
+:::
+:::
+
+
+* Then, only keep the data from the `Station` `BY31`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+library(dplyr)
+tidy_df |> 
+  mutate(Longitude = as.numeric(Longitude),
+         Latitude = as.numeric(Latitude)) |> 
+  filter(Year %in% 2012:2015) |> 
+  filter(Station == "BY31")
+
+# OR
+
+tidy_df |> 
+  mutate(Longitude = as.numeric(Longitude),
+         Latitude = as.numeric(Latitude)) |> 
+  filter(Year %in% 2012:2015,
+         Station == "BY31")
+```
+
+:::
+:::
+
+* Then, `select` all columns except `Longitude` and `Latitude`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+library(dplyr)
+tidy_df |> 
+  mutate(Longitude = as.numeric(Longitude),
+         Latitude = as.numeric(Latitude)) |> 
+  filter(Year %in% 2012:2015,
+         Station == "BY31") |> 
+  select(-Longitude,
+         -Latitude)
+```
+
+:::
+:::
+
+* Then, `rename` `Month_abb` as `Month`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+library(dplyr)
+tidy_df |> 
+  mutate(Longitude = as.numeric(Longitude),
+         Latitude = as.numeric(Latitude)) |> 
+  filter(Year %in% 2012:2015,
+         Station == "BY31") |> 
+  select(-Longitude,
+         -Latitude) |> 
+  rename(Month = Month_abb)
+```
+:::
+:::
+
+* Then, `group_by`: `Month` and `Group_Taxa`  and take the `Biomass` average and standard deviation and save the dataframe as `summarized_df`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+library(dplyr)
+summarised_df <-
+  tidy_df |> 
+  mutate(Longitude = as.numeric(Longitude),
+         Latitude = as.numeric(Latitude)) |> 
+  filter(Year %in% 2012:2015,
+         Station == "BY31") |> 
+  select(-Longitude,
+         -Latitude) |> 
+  rename(Month = Month_abb) |> 
+  group_by(Month, Group_Taxa) |> 
+  summarise(average = mean(Biomass),
+            standard_deviation = sd(Biomass))
+```
+:::
+:::
+
+## Ploting the data with `ggplot2`
+
+In this part, we will build a plot step by step using the grammar of graphic in `ggplot2`
+
+* Load the package and only keep the values for the copepod `Acartia` from the `summarised_df` dataset in a new dataset called `acartia`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r, bag-1}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+library(ggplot2)
+acartia <-
+  summarised_df |> 
+  filter(Group_Taxa == "Copepoda_Acartia")
+```
+
+:::
+:::
+
+* Initiate a ggplot with the dataset `acartia` with the `Month` as the x-axis and the `average` biomass as the y-axis
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r, bag-2}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+ggplot(data = acartia,
+       mapping = aes(x = Month, y = average))
+```
+
+:::
+
+```{r, bag-1}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+```
+
+```{r, bag-2}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+```
+
+:::
+
+* Add a `barplot` geometry to the plot
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r, bag-3}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+ggplot(data = acartia,
+       mapping = aes(x = Month, y = average)) +
+  geom_bar(stat = "identity") # <- this is needed for the barplot geometry
+```
+
+:::
+
+```{r, bag-3}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+```
+
+:::
+
+* Arrange the bar from the lowest to the highest values
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r, bag-4}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+ggplot(data = acartia,
+       mapping = aes(x = reorder(Month, average), y = average)) +
+  geom_bar(stat = "identity") # <- this is needed for the barplot geometry
+```
+
+:::
+
+```{r, bag-4}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+```
+
+:::
+
+* Add a color filling in the bars according the Month
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r, bag-5}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+ggplot(data = acartia,
+       mapping = aes(x = reorder(Month, average), y = average, fill = Month)) +
+  geom_bar(stat = "identity") # <- this is needed for the barplot geometry
+
+
+```
+
+:::
+
+```{r, bag-5}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+```
+
+:::
+
+* Change the axis as `Biomass` and `Month`, and add a title
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+```{r, bag-6}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+ggplot(data = acartia,
+       mapping = aes(x = reorder(Month, average), y = average, fill = Month)) +
+  geom_bar(stat = "identity") + # <- this is needed for the barplot geometry
+  labs(x = "Month", y = "Biomass", title = "My nice ggplot")
+```
+
+:::
+
+```{r, bag-6}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+```
+
+:::

@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Marine Ecosystem Dynamics\n\nSeptember 2024\nOn this website, material for the introduction to R are stored.\nIn the MATERIAL tab, slides and exercises can be found.\n\nDuring this introduction, we will learn how to use  in  to handle data.\nInstall R and R studio before the start of the lecture !\n\n\n\n\n\n\nDay 1\n\nR syntax\n\n\n\n\nDay 2\n\nData import using readr\nPipe the data using magrittr\nTidy the data using tidyr\nArrange the data using dplyr\nVisualise the data using ggplot2\n\n\n\n\nThe data we will use are all available in the package PlanktonData"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#day-1",
+    "href": "index.html#day-1",
+    "title": "Introduction to R",
+    "section": "Day 1",
+    "text": "Day 1\n\nR syntax\nData import using readr\n\nThe data we will use are all available in the package PlanktonData"
+  },
+  {
+    "objectID": "index.html#day-2",
+    "href": "index.html#day-2",
+    "title": "Introduction to R",
+    "section": "Day 2",
+    "text": "Day 2\n\nPipe the data using magrittr\nTidy the data using tidyr\nArrange the data using dplyr\nVisualise the data using ggplot2"
+  },
+  {
+    "objectID": "index.html#the-data-we-will-use-are-all-available-in-the-package-planktondata",
+    "href": "index.html#the-data-we-will-use-are-all-available-in-the-package-planktondata",
+    "title": "Introduction to R",
+    "section": "The data we will use are all available in the package PlanktonData",
+    "text": "The data we will use are all available in the package PlanktonData\nInstall R and R studio before the start of the lecture !"
+  },
+  {
+    "objectID": "MATERIAL/index.html",
+    "href": "MATERIAL/index.html",
+    "title": "MATERIAL",
+    "section": "",
+    "text": "02-Sep-2023 (Saturday)\nIntroduction to R\nSlides\nTutorial\n\n\n03-Sep-2023 (Sunday)\nData manipulation and visualisation\nSlides\nTutorial"
+  }
+]

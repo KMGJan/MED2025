@@ -1,0 +1,487 @@
+---
+title: "Introduction to R"
+subtitle: "Marine Ecosystem Dynamics"
+author: "Kinlan M.G. Jan"
+format: 
+  revealjs:
+    toc: false
+    transition: slide
+    fontsize: 25pt
+    slide-number: true
+    show-slide-number: all
+    chalkboard: true
+    logo: "/assets/images/SU_black.svg"
+---
+
+## Plan for today's lecture
+
+
+-   The `R` syntax
+-   The `R studio` software
+-   Variables, functions and vectors
+-   Importing data
+
+## Why using R? {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+### Pro
+
+
+🤑 Free <br>
+🔓 Open source <br>
+🥼 Reproducible science 
+
+
+```{r}
+#| eval: true
+#| echo: true
+# You can keep track of all the data analysis steps
+2 + 2 + 3       # step 1
+log(2 + 2 + 3)  # step 2
+```
+:::
+
+::: {.column width="50%"}
+
+:::
+:::
+
+## Why using R? {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+### Pro
+
+
+🤑 Free <br>
+🔓 Open source <br>
+🥼 Reproducible science 
+
+
+```{r}
+#| eval: true
+#| echo: true
+# You can keep track of all the data analysis steps
+2 + 2 + 3       # step 1
+log(2 + 2 + 3)  # step 2
+```
+:::
+
+::: {.column width="50%"}
+### Cons
+
+👻 Scary <br>
+🧑‍💻 Syntax
+
+
+```{r, bag-1}
+#| eval: false
+#| echo: true
+x = 1:100 ; y = log(x)
+library(ggplot2)
+ggplot() +
+  geom_line(mapping = aes(x = x,
+                          y = y),
+            col = "firebrick",
+            linewidth = 2) +
+  theme_classic()+
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_text(size = 23)) +
+  labs(x = "Time",
+       y = "Skills")
+```
+:::
+:::
+
+## Why using R? {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+### Pro
+
+
+🤑 Free <br>
+🔓 Open source <br>
+🥼 Reproducible science 
+
+
+```{r}
+#| eval: true
+#| echo: true
+# You can keep track of all the data analysis steps
+2 + 2 + 3       # step 1
+log(2 + 2 + 3)  # step 2
+```
+:::
+
+::: {.column width="50%"}
+### Cons
+
+👻 Scary <br>
+🧑‍💻 Syntax
+
+
+```{r, bag-1}
+#| eval: true
+#| echo: false
+```
+:::
+:::
+
+
+## **R studio** is a great tool to use **R**
+
+On one window it combines:
+
+- Environment
+- Console
+- Script
+- Plot, help, ...
+
+
+
+## **R** is open and free
+
+- People have worked on it and created tools and function that anyone case use!
+
+::: incremental
+  - R base functions are already accessible when we open **R**
+  - More function from other packages 📦 can be loaded
+:::
+
+## How to install and load packages
+
+-   A package need to be installed only once
+
+
+-   To use functions within a package call it using `library()`
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("PackageName")
+library(PackageName)
+```
+
+. . . 
+
+- Once the package is installed we can look at the version of the package and how to cite it.
+
+```{r}
+#| eval: false
+#| echo: true
+packageVersion("PackageName")
+citation("PackageName")
+```
+
+## R syntax {auto-animate="true"}
+
+- Like Excel, or a calculator **R** can help us resolve "basic" operations
+
+```{r}
+2 + 2
+```
+
+## R syntax {auto-animate="true"}
+
+- Like Excel, or a calculator **R** can help us resolve "basic" operations
+
+```{r}
+#| code-line-numbers: "3,4"
+2 + 2
+4 * 4
+```
+
+## R syntax {auto-animate="true"}
+
+- Like Excel, or a calculator **R** can help us resolve "basic" operations
+
+```{r}
+#| code-line-numbers: "5,6"
+2 + 2
+4 * 4
+(5 + 4) / (1 - 4 ^ 2)
+```
+
+## R syntax {auto-animate="true"}
+
+- Like Excel, or a calculator **R** can help us resolve "basic" operations
+
+```{r}
+2 + 2
+4 * 4
+(5 + 4) / (1 - 4 ^ 2)
+```
+
+- But also more complex operations
+
+```{r, fig.height=3}
+#| echo: false
+x = seq(pi, 5*pi, pi/7); y1 = sin(x) ; y2 = cos(x)
+plot(x, y1, type = "b", col = "red", main = "cos and sin", pch = 19, xlab = "x", ylab = "y")
+lines(x, y2,type = "b", col = "blue")
+legend(3,.7, legend= c("sin", "cos"), col = c("red", "blue"), lty = 1, cex = 0.8)
+```
+
+
+## Values {auto-animate="true"}
+
+In **R** values can be of several categories:
+
+- Logical: `TRUE` or `FALSE`
+- Numeric: `3` or `3.2`
+- Character: `"t"`, `"blue"` or `"this is a character"`
+
+. . .
+
+We can ask **R** the category of our values
+
+```{r}
+class(TRUE)
+```
+
+## Values {auto-animate="true"}
+
+In **R** values can be of several categories:
+
+- Logical: `TRUE` or `FALSE`
+- Numeric: `3` or `3.2`
+- Character: `"t"`, `"blue"` or `"this is a character"`
+
+We can ask **R** the category of our values
+
+```{r}
+#| code-line-numbers: "3,4"
+class(TRUE)
+class(3)
+```
+
+## Values {auto-animate="true"}
+
+In **R** values can be of several categories:
+
+- Logical: `TRUE` or `FALSE`
+- Numeric: `3` or `3.2`
+- Character: `"t"`, `"blue"` or `"this is a character"`
+
+We can ask **R** the category of our values
+
+```{r}
+#| code-line-numbers: "5,6"
+class(TRUE)
+class(3)
+class("t")
+```
+
+## Values {auto-animate="true"}
+
+In **R** values can be of several categories:
+
+- Logical: `TRUE` or `FALSE`
+- Numeric: `3` or `3.2`
+- Character: `"t"`, `"blue"` or `"this is a character"`
+
+We can ask **R** the category of our values
+
+```{r}
+#| code-line-numbers: "7,8"
+class(TRUE)
+class(3)
+class("t")
+class(pi)
+```
+
+## Assigning variables
+
+We can create variables that contain our values.
+
+To do so, use `<-` or `=`
+```{r}
+#| eval: false
+variable <- value
+```
+
+. . .
+
+If we want to create a variable `x` that is equal to the value `3` and `y` that is equal to the value `"blue"`
+
+```{r}
+x <- 3
+y <- "blue"
+```
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%}
+
+::: {.callout-warning}
+Do not mix with `==` that test if the values are equals.
+:::
+
+:::
+
+
+:::{.column width="50%}
+
+::: {.callout-tip collapse="true"}
+The opposite of `==` is `!=`
+:::
+
+:::
+
+:::
+
+. . .
+
+The variables are then stored in our "environment" and we can reuse them
+
+```{r}
+x * 2 + x^x
+```
+
+## Functions
+
+**R** uses functions that all have the same structure: `function_name(argument, ...)`
+```{r}
+#| eval: false
+log(argument1)
+plot(argument1, argument2, ...)
+```
+
+. . .
+
+It is **impossible** to know everything by heart and what arguments are needed.
+
+
+Fortunately, manuals for each function exists using `?` before the function name.
+
+
+```{r}
+?log()
+```
+
+## Vectors {auto-animate="true"}
+
+**R** stores values in vectors or arrays that can be created in different ways:
+
+```{r}
+vector1 <- c(1, 2, 3) ; print(vector1)
+```
+
+## Vectors {auto-animate="true"}
+
+**R** stores values in vectors or arrays that can be created in different ways:
+
+```{r}
+#| code-line-numbers: "3,4"
+vector1 <- c(1, 2, 3) ; print(vector1)
+vector2 <- seq(from = 3, to = 4, by = 0.34) ; print(vector2)
+```
+
+## Vectors {auto-animate="true"}
+
+**R** stores values in vectors or arrays that can be created in different ways:
+
+```{r}
+#| code-line-numbers: "5,6"
+vector1 <- c(1, 2, 3) ; print(vector1)
+vector2 <- seq(from = 3, to = 4, by = 0.34) ; print(vector2)
+vector3 <- rep("blue", 2) ; print(vector3)
+```
+
+## Vectors {auto-animate="true"}
+
+**R** stores values in vectors or arrays that can be created in different ways:
+
+```{r, bag-2}
+#| code-line-numbers: "7,8"
+vector1 <- c(1, 2, 3) ; print(vector1)
+vector2 <- seq(from = 3, to = 4, by = 0.34) ; print(vector2)
+vector3 <- rep("blue", 2) ; print(vector3)
+vector4 <- c(vector1, vector2) ; print(vector4)
+```
+
+## Vectors {auto-animate="true"}
+
+**R** stores values in vectors or arrays that can be created in different ways:
+
+```{r, bag-2}
+#| code-line-numbers: "|"
+#| eval: true
+#| echo: true
+```
+
+We use these vectors to do our calculations:
+
+```{r}
+#| code-line-numbers: "1,2|3,4|5,6|7,8"
+vector1 * vector2
+mean(vector2)
+sd(vector4)
+max(vector1)
+```
+
+
+## Importing data
+
+
+The best way to do so is to use:<br>
+[`read.*(file = "/your/file.*", sep = "/t", dec = ",")`]{.smaller}
+
+. . .
+
+- Where `*` is:
+
+  - `csv` - comma-separated values
+  - `csv2` - semicolon-separated values, with comma as the decimal mark
+  - `delim` - any delimited files
+
+. . .
+
+- `file` corresponds to the path of the file
+
+. . .
+
+- `sep` specifies the separator mark
+
+. . .
+
+- `dec` specifies the decimal mark
+
+## Plan for the next session
+
+::: {layout-ncol="5"}
+![](assets/images/tidyverse.svg)
+
+![](assets/images/pipe.svg)
+
+![](assets/images/tidyr.svg)
+
+![](assets/images/dplyr.svg)
+
+![](assets/images/ggplot2.svg)
+:::
+
+-   Introduction to `tidyverse`
+-   Pipe the data using `magrittr`
+-   Clean the data using `tidyr`
+-   Arrange the data using `dplyr`
+-   Plot using `ggplot2`
+
+## Do not hesitate to use google to get help !
+
+If you have an issue with something, you are probably not the first and someone asked a solution on a forum !
+
+::: {layout-ncol="3" style="text-align: center; vertical-align: bottom;"}
+<img src="assets/images/google.svg" width="100%"/>
+
+<img src="assets/images/stackoverflow.jpg" width="100%"/>
+
+<img src="assets/images/datanovia.png" width="60%"/>
+:::
+
+

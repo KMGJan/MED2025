@@ -1,0 +1,618 @@
+---
+title: "[Tuto{{< fa brands r-project >}}ial - Part 1]{.no-print} [TutoRial - Part 1]{.print-only}"
+subtitle: "Marine Ecosystem Dynamics - 2025"
+author: "Kinlan M.G. Jan"
+format:
+  html:
+    html-math-method: katex
+    toc: true
+    toc-title: "Tuto{{< fa brands r-project >}}ial 1"
+    toc-depth: 3
+  pdf:
+    pdf-engine: weasyprint
+css: tutorial.css
+format-links: [pdf]
+---
+
+::: no-print
+## New script
+
+As seen during the presentation, we will keep track of our progress. We thus need to open a new script following one of the option below.
+
+```{mermaid}
+flowchart LR
+  A[1. File] --> B[2. New File]
+  B --> C[3. R script]
+```
+
+```{mermaid}
+flowchart LR
+  A["⌘/Ctlr + ⇧ + N"]
+```
+:::
+
+## [{{< fa brands r-project >}} syntax]{.no-print} [**R** syntax]{.print-only}
+
+[{{< fa brands r-project >}} is a programming language that use a simplified syntax. In this section, we will explore how to write a script and execute it.]{.no-print} [**R** is a programming language that use a simplified syntax. In this section, we will explore how to write a script and execute it.]{.print-only}
+
+But first some syntax information:
+
+-   Everything after `#` is considered as a comment and will not be executed. It is very important to write what we are doing, so we do not get lost next time we open our scripts.
+
+```{r}
+#| echo: true
+#| eval: true
+
+# 2 + 2 will not work because of the #
+2 + 2 # We should then annotate our script like this
+```
+
+-   Several lines of code can be written in one line but must be separated by a semicolon
+
+```{r}
+#| echo: true
+#| eval: true
+2 + 2
+3 * 2
+
+# This can also be written as follow:
+2 + 2 ; 3 * 2
+```
+
+-   [In {{< fa brands r-project >}} we can name any object using `=`, `<-`, `->` or `assign`]{.no-print} [In **R** we can name any object using `=`, `<-`, `->` or `assign`]{.print-only}
+
+```{r}
+#| echo: true
+#| eval: true
+c(1, 2, 3, 4) -> my_first_vector
+my_vector <- c(1, 2, 3, 4)
+my_function = function(x){x + 2}
+assign("x", c(2, 3, 4, 5))
+```
+
+-   `==` is a logical function that can be translated as *is equal to*, contrarily *is not equal to* is written `!=`
+
+```{r}
+#| echo: true
+#| eval: true
+2 + 2 == 4
+3 * 2 == 4
+3 * 2 != 4
+```
+
+### Exercises
+
+[Using a new {{< fa brands r-project >}} script, do these calculations:]{.no-print} [Using a new **R** script, do these calculations:]{.print-only}
+
+-   $\ 2^7$
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+2^7
+```
+:::
+:::
+
+-   $\ cos(\pi)$
+
+::: no-print
+::: {.callout-tip collapse="true" title="Hint"}
+```{r}
+#| echo: true
+#| eval: false
+?cos()
+?pi()
+```
+:::
+:::
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+cos(pi)
+```
+:::
+:::
+
+-   The sum of all number from 1 to 100
+
+::: no-print
+::: {.callout-tip collapse="true" title="Hint"}
+Operations can take place for an entire vector
+:::
+
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+vector <- seq(from = 1, to = 100, by = 1) # Create a vector from 1 to 100
+sum(vector) # Calculate the sum
+```
+:::
+:::
+
+Create a parameter `x1` that equals to 5 and a parameter `x2` that equals to 10
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+x1 <- 5 ; x2 <-  10
+```
+:::
+:::
+
+-   Is $\ 2*$ `x1` equal to `x2`?
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+2 * x1 == x2
+```
+:::
+:::
+
+## Functions
+
+[As seen during the lecture, {{< fa brands r-project >}} works with functions that can:]{.no-print} [As seen during the lecture, **R** works with functions that can:]{.print-only}
+
+-   [Already be implemented in base {{< fa brands r-project >}}]{.no-print} [Already be implemented in base **R**]{.print-only}
+-   Comming from another package
+-   Created by the user
+
+We will see these three examples in this section, but first it is important to remember that the typical structure of a function is `function(argument1, ...)`.
+
+[Fortunately {{< fa brands r-project >}} helps us to remember what are the needed `arguments`:]{.no-print} [Fortunately **R** helps us to remember what are the needed `arguments`:]{.print-only}
+
+-   Using `help()` or `?`
+
+::: no-print
+```{r}
+#| echo: true
+#| eval: false
+help(topic = "sin")
+?sin
+```
+:::
+
+-   Using `example`
+
+::: no-print
+```{r}
+#| echo: true
+#| eval: true
+example(sum)
+```
+:::
+
+For the functions that comes from external packages, we first need to install the new packages. The most common way to do so is by executing `install.packages("Package_Name")`. Then when we want to load the functions, we start the script by executing `library(Package_Name)`.
+
+Finally, if we really do not find a suitable function in a package, we can create your functions following this general structure, but this will not be covered in this tutorial:
+
+```{r}
+#| echo: true
+#| eval: false
+my_function <- function(<argument1>, <argument2>, ...){
+  <here comes the definition of my function>
+  return(<output of the definition>)
+}
+```
+
+### Exercises
+
+-   [What is the function `log()` doing and from were does this function come from (base {{< fa brands r-project >}}, other packages)?]{.no-print} [What is the function `log()` doing and from were does this function come from (base **R**, other packages)?]{.print-only}
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+?log() #It takes the natural logarithm of the value, it comes from base R
+log(10) 
+```
+:::
+:::
+
+-   What are the mandatory arguments for the function `plot()`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+?plot() # the coordinates points x and y are needed
+```
+:::
+:::
+
+-   Is there help associated with the functions from a loaded package?
+
+::: no-print
+::: {.callout-tip collapse="true" title="Hint"}
+The function `ggplot()` comes from the package `ggplot2`
+:::
+
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: false
+library(ggplot2)
+?ggplot # Yes, there is also help for the imported functions
+```
+:::
+
+::: {.callout title="Optional exercises"}
+-   Create a function that print `Hello World!` when executing it
+
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+Hello <- function(){
+  cat("Hello World!") # print("Hello World!") works too
+}
+Hello()
+```
+:::
+
+-   Create a function that multiply the input by 4
+
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+multiplyeR <- function(x, y = 4){
+  return(x * y)
+}
+multiplyeR(x = 2) # It works with values
+multiplyeR(x = seq(1, 3, 1)) # But also vectors
+```
+:::
+:::
+:::
+
+::: print-only
+\newpage
+:::
+
+## Vectors
+
+[{{< fa brands r-project >}} works with vector from which we can do our calculations.]{.no-print} [**R** works with vector from which we can do our calculations.]{.print-only} Several ways exist to create a vector:
+
+-   Using `c()`, values are added next to each other and separated with a `,`.
+
+```{r}
+#| echo: true
+#| eval: false
+c(1, 2, 1, 4) # It works with integers (round numbers)
+c(1.1, 2.4, 3.14652) # It works with floats (decimal numbers)
+c("chocolate", "ice-cream") # It works with character
+c(TRUE, FALSE) # It works with logical variables
+```
+
+-   Using `rep()` to repeat the same values several times.
+
+```{r}
+#| echo: true
+#| eval: false
+rep(x = 3, 2) # it reads: repeat 2 times the value x that is equal to 3
+rep(x = "chocolate", 3) # it reads: repeat 3 times the value x that is equal to "chocolate"
+```
+
+-   Using `seq()` to create a sequence of values. It only works for numeric values!
+
+```{r}
+#| echo: true
+#| eval: false
+seq(from = 0, to = 10, by = 2) # it reads: create a sequence of values from 0 to 10 every 2 numbers
+seq(from = -1, to = 1, by = 0.2) # it also works with negative values and decimal
+```
+
+-   Combining all of the above
+
+```{r}
+#| echo: true
+#| eval: false
+rep(x = c(seq(from = 2, to = 3, by = 0.2), 5), 2)
+c(rep(x = "character", 5), "other character")
+c(seq(from = 2, to = 10, by = 2), rep(x = 1000, 2), c(1, 4, 2))
+```
+
+### Exercises
+
+-   Create a vector `v1` that contains the values 1, 2, 3, 4, 6
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+v1 <- c(1, 2, 3, 4, 6)
+```
+:::
+:::
+
+-   Create a vector `v2` that contains 10 times the values 1, 2, 3, 4, 6
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+v2 <- rep(v1, 10)
+```
+:::
+:::
+
+-   Create a vector `v3` that repeats `TRUE`, `FALSE` 2 times
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+v3 <- rep(c(TRUE, FALSE), 2)
+```
+:::
+:::
+
+-   Create a vector `v4` that goes from 10 to 2000
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+v4 <- 10:2000
+# or 
+v4 <- seq(from  = 10, to = 2000, by = 1)
+```
+:::
+:::
+
+-   Create a vector `v5` that contains `v1`, `v2`, `v3` and 2 times `v4`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+v5 <- c(v1, v2, v3, rep(v4, 2))
+```
+:::
+:::
+
+::: print-only
+\newpage
+:::
+
+## Dataframe
+
+Most likely, we will work with data stored in dataframes. A dataframe is composed of observations (rows) and variables (columns). We can see a dataframe like multiples vectors put togethers.
+
+For example in the dataframe below (named `df`) is composed of 4 vectors:
+
+1.  `Species` that contains the species names
+2.  `Abundance` that contains the abundances of the species
+3.  `Location` that contains the location of the species
+4.  `Date` that contains the sampling date
+
+```{r}
+#| echo: false
+#| eval: true
+df <- data.frame(Species = c("Acartia", "Pseudocalanus", "Centropages"),
+           Abundance = c(34, 12, 17),
+           Location = c("Askö", "Askö", "Askö"),
+           Date = c("03-09-2024", "04-09-2024", "02-09-2024"))
+print(df)
+```
+
+We can access the individual columns (i.e., vectors) using `$`
+
+```{r}
+#| echo: true
+#| eval: true
+df$Species
+df$Abundance
+df$Location
+df$Date
+```
+
+### Exercises
+
+-   Create a vector `genus` containing the character `"Acartia", "Centropages", "Temora", "Acartia", "Centropages", "Temora"`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+genus = c("Acartia", "Centropages", "Temora", "Acartia", "Centropages", "Temora") 
+# or genus = rep(c("Acartia", "Centropages", "Temora"), 2)
+```
+:::
+:::
+
+-   Create a vector `station` containing the character `"Askö", "Askö", "Askö", "Tjarnö", "Tjarnö", "Tjarnö"`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+station = c(rep("Askö",3),rep("Tjarnö", 3))
+```
+:::
+:::
+
+-   Create a vector `abundance` containing the values `3, 10.2, 4, 2.3, 4, 9.4`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+abundance = c(3, 10.2, 4, 2.3, 4, 9.4)
+```
+:::
+:::
+
+-   Combine all the vectors in a dataframe called `df`
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+df <- data.frame("Genus" = genus,
+                 "Station" = station,
+                 "Abundance" = abundance)
+```
+:::
+:::
+
+-   Create a vector `output` that correspond to the column `Abundance` of the dataframe `df`. Is `output` similar to the vector `abundance`?
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+output <- df$Abundance # or df[[3]]
+output == abundance
+```
+:::
+:::
+
+##  [Importing data in {{< fa brands r-project >}}]{.no-print} [Importing data in **R** ]{.print-only}
+
+::: print-only
+More often we enter our data in spreadsheets. We then need to import our data in **R** to process them.<br>
+To do so, we use the `read.*` function family.
+:::
+
+::: no-print
+More often we enter our data in spreadsheets. We then need to import our data in {{< fa brands r-project >}} to process them.<br>
+To do so, we use the `read.*` function family.
+:::
+
+A typical data import protocol looks like this:
+
+1. Set the working directory with its absolute path
+
+```{r}
+#| echo: true
+#| eval: false
+setwd("/Absolute/Path/To/Working/Directory")
+```
+
+2. Import your dataset in your environment
+
+```{r}
+#| echo: true
+#| eval: false
+df <- read.csv("./Relative/Path/Dataset.csv")
+```
+
+3. Examine the structure of the data to see if the importation worked well
+
+```{r}
+#| echo: true
+#| eval: false
+str(df)
+head(df)
+tail(df)
+```
+
+### Exercises
+
+```{r, echo=FALSE, results='asis'}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+if (knitr::is_html_output()) {
+  library("downloadthis");library(PlanktonData)
+  data(zooplankton)
+  zooplankton  |> 
+    download_this(
+    output_name = "zooplankton_seasonality",
+    output_extension = ".csv",
+    button_label = " Click here to download the dataset zooplankton_seasonality.csv",
+    button_type = "primary",
+    has_icon = TRUE,
+    csv2 = FALSE,
+    icon = "fa fa-save")
+} else {
+  cat("You can download the dataset on [GitHub](https://github.com/KMGJan/MED2024/tree/main/MATERIAL/tutorial/assets)")
+}
+```
+
+
+
+* Import the dataset in your environment
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+```{r}
+#| echo: true
+#| eval: true
+df <- read.csv("./assets/zooplankton_seasonality.csv")
+```
+:::
+:::
+
+
+ * How many rows and columns does this dataset contain?
+ 
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+The structure of the dataset shows that there is 7 variables (columns) and 2956 observations (rows)
+
+```{r}
+#| echo: true
+#| eval: true
+str(df)
+```
+:::
+:::
+
+ * What are the headers of the columns?
+
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+
+Both the stucture and the head show that the headers are: `Month_abb`, `Year`, `Station`, `Coordinates`, `Group`, `Taxa`, `Biomass`
+
+```{r}
+#| echo: true
+#| eval: true
+head(df)
+```
+
+:::
+:::
+
+ * What is the last row?
+ 
+::: no-print
+::: {.callout-note collapse="true" title="Solution" appearance="simple"}
+To see the last row, use the `tail` function
+
+```{r}
+#| echo: true
+#| eval: true
+tail(df)
+```
+:::
+:::
