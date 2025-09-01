@@ -4,5 +4,5 @@ toc: false
 ---
 |                                     |                                   |                             |                             |
 |------------------------------------------|----------------------------------------|------------------------------------|--------------------------------------|
-|[**05-Sep-2024 (Thursday)**]{.highlight}  | Introduction to R                      | [Slides](slides/part1.qmd){.slides target="_blank"} | [Tutorial](tutorial/part1.qmd){.tutorial target="_blank"} |
-|[**06-Sep-2024 (Friday)**]{.highlight}    | Data handling and visualisation    | [Slides](slides/part2.qmd){.slides target="_blank"} | [Tutorial](tutorial/part2.qmd){.tutorial target="_blank"}|
+|[**05-Sep-2025**]{.highlight}  | Introduction to R                      | [Slides](slides/part1.qmd){.slides target="_blank"} | [Tutorial](tutorial/part1.qmd){.tutorial target="_blank"} |
+|[**05-Sep-2025**]{.highlight}    | Data handling and visualisation    | [Slides](slides/part2.qmd){.slides target="_blank"} | [Tutorial](tutorial/part2.qmd){.tutorial target="_blank"}|
