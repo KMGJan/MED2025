@@ -23,7 +23,7 @@ Install [R](https://www.r-project.org/){target="_blank"} and [R studio](https://
 
 ::: columns
 ::: {.column width="\"50%"}
-### Day 1
+### Tutorial 1
 
 - R syntax
 - Import Data
@@ -31,7 +31,7 @@ Install [R](https://www.r-project.org/){target="_blank"} and [R studio](https://
 :::
 
 ::: {.column width="\"40%"}
-### Day 2
+### Tutorial 2
 - Pipe the data using [`magrittr`](https://magrittr.tidyverse.org/){target="_blank"}
 - Tidy the data using [`tidyr`](https://tidyr.tidyverse.org/){target="_blank"}
 - Arrange the data using [`dplyr`](https://dplyr.tidyverse.org/){target="_blank"}

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "Marine Ecosystem Dynamics\n\nSeptember 2025\nOn this website, material for the introduction to R are made available.\nIn the MATERIAL tab, slides and exercises can be found.\n\nDuring this introduction, we will learn how to use  in  to handle data.\nInstall R and R studio before the start of the lecture !\n\n\n\n\n\n\nDay 1\n\nR syntax\nImport Data\n\n\n\n\nDay 2\n\nPipe the data using magrittr\nTidy the data using tidyr\nArrange the data using dplyr\nVisualise the data using ggplot2\n\n\n\n\nThe data we will use are all available in the package PlanktonData"
+    "text": "Marine Ecosystem Dynamics\n\nSeptember 2025\nOn this website, material for the introduction to R are made available.\nIn the MATERIAL tab, slides and exercises can be found.\n\nDuring this introduction, we will learn how to use  in  to handle data.\nInstall R and R studio before the start of the lecture !\n\n\n\n\n\n\nTutorial 1\n\nR syntax\nImport Data\n\n\n\n\nTutorial 2\n\nPipe the data using magrittr\nTidy the data using tidyr\nArrange the data using dplyr\nVisualise the data using ggplot2\n\n\n\n\nThe data we will use are all available in the package PlanktonData"
   },
   {
     "objectID": "about.html",
